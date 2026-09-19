@@ -3,7 +3,7 @@
 
 ## 1. Cel i zakres
 
-`svcdesk` jest pojedynczą usługą HTTP/JSON do rejestrowania i obsługi zgłoszeń service desk. Usługa nadaje zgłoszeniom priorytet na podstawie wpływu i pilności, pilnuje ich cyklu życia oraz oblicza terminy SLA. Wszystkie znaczniki czasu w API są reprezentowane jako poprawne daty i czasy RFC 3339 z informacją o strefie; porównania dotyczą tej samej chwili niezależnie od zapisanego offsetu.
+`svcdesk` jest pojedynczą usługą HTTP/JSON do rejestrowania i obsługi zgłoszeń service desk. Usługa nadaje zgłoszeniom priorytet na podstawie wpływu i pilności, pilnuje ich cyklu życia oraz oblicza terminy SLA. Wszystkie requesty i odpowiedzi z body używają `application/json`. Wszystkie znaczniki czasu są chwilami RFC 3339, porównywanymi jako punkty w czasie, a usługa zwraca je w UTC z końcówką `Z`.
 
 Niniejsza specyfikacja jawnie przyjmuje rozstrzygnięcia konfliktów: **C1: `wallclock`**, **C2: `immutable`**, **C3: `matrix`**.
 
@@ -12,27 +12,31 @@ Niniejsza specyfikacja jawnie przyjmuje rozstrzygnięcia konfliktów: **C1: `wal
 Zgłoszenie zwracane przez API zawiera co najmniej:
 
 - `id`: niepusty, unikatowy napis nadany przez usługę;
-- `title`: tytuł przekazany przy tworzeniu;
+- `title`: wymagany tytuł od 1 do 200 znaków;
+- `description`: opcjonalny opis od 0 do 4000 znaków, domyślnie pusty napis `""`;
 - `impact` i `urgency`: liczby całkowite od 1 do 3;
-- `reporter`: obiekt zawierający co najmniej niepuste pole `name` oraz opcjonalne logiczne `vip`;
+- `reporter`: obiekt z wymaganym `name` od 1 do 100 znaków, opcjonalnym `email` typu napis lub `null` (domyślnie `null`) i opcjonalnym logicznym `vip` (domyślnie `false`);
 - `priority`: jedna z wartości `P1`, `P2`, `P3`, `P4`, wyliczona przez usługę;
 - `state`: `new`, `acknowledged`, `in_progress`, `resolved` albo `closed`;
 - `created_at` oraz, gdy dana czynność już nastąpiła, odpowiednio `acknowledged_at`, `resolved_at` i `closed_at`;
+- `related_to`: opcjonalny identyfikator wcześniejszego zgłoszenia lub `null`, domyślnie `null`; w Lab 1 wskazany identyfikator nie jest walidowany, w szczególności usługa nie sprawdza istnienia powiązanego zgłoszenia;
 - `sla`: obiekt zawierający co najmniej `ack_due_at` i `resolve_due_at`.
 
-Pola czasu dotyczące czynności nie mogą być ustawione przed wykonaniem tych czynności. Odpowiedzi błędów są JSON-em z polem najwyższego poziomu `error`, opisującym błąd w sposób czytelny dla klienta.
+Pola czasu dotyczące czynności są `null` albo nieobecne przed wykonaniem tych czynności. Odpowiedzi błędów są JSON-em z obiektem najwyższego poziomu `error`, na przykład `{ "error": { "code": "validation", "message": "title is required" } }`; konkretne wartości `code` nie stanowią kontraktu Lab 1.
 
 ## 3. Endpointy
 
 ### `GET /health`
 
-Zwraca `200 OK` i JSON `{ "status": "ok" }`, gdy proces jest gotowy do obsługi żądań. Nieistniejąca trasa zwraca `404 Not Found`.
+Zwraca `200 OK` i JSON `{ "status": "ok", "service": "svcdesk" }`, gdy proces jest gotowy do obsługi żądań. Odpowiedź może zawierać dodatkowe pola. Nieistniejąca trasa zwraca `404 Not Found` z body JSON; niewłaściwa metoda dla istniejącej trasy może zwrócić 404 albo 405.
 
 ### `POST /tickets`
 
-Tworzy zgłoszenie. Wymagany JSON zawiera `title`, `impact`, `urgency` oraz `reporter` z polem `name`; `reporter.vip` jest opcjonalną wartością logiczną. `title` ma od 1 do 200 znaków. `impact` i `urgency` muszą być liczbami całkowitymi należącymi do zbioru `{1, 2, 3}`. Pole `priority` przesłane przez klienta jest ignorowane: jedynym źródłem priorytetu jest macierz z rozdziału 4.
+Tworzy zgłoszenie. Wymagany JSON zawiera `title`, `impact`, `urgency` oraz `reporter` z polem `name`. Opcjonalne pola to `description`, `reporter.email`, `reporter.vip` i `related_to`, z wartościami domyślnymi opisanymi w rozdziale 2. `impact` i `urgency` muszą być liczbami całkowitymi należącymi do zbioru `{1, 2, 3}`.
 
-Sukces zwraca `201 Created` i kompletne zgłoszenie w stanie `new`, z nowym identyfikatorem, `created_at`, wyliczonym `priority` oraz oboma terminami SLA. Brak wymaganego pola, tytuł dłuższy niż 200 znaków, `impact` poza zakresem (w szczególności `5`), tekstowa pilność (w szczególności `"high"`), nieprawidłowy typ lub niepoprawny JSON zwracają `400 Bad Request` albo `422 Unprocessable Entity`, z JSON-em zawierającym `error`.
+Pola należące do serwera — `id`, `priority`, `state`, `created_at`, `acknowledged_at`, `resolved_at`, `closed_at` i `sla` — przesłane w requeście są po cichu ignorowane. Tak samo ignorowane są wszystkie pola nieznane. Nie powodują one błędu i nie mogą nadpisać wartości wyliczonych lub nadanych przez usługę.
+
+Sukces zwraca `201 Created` i kompletne zgłoszenie w stanie `new`, z nowym identyfikatorem, `created_at`, wyliczonym `priority`, wartościami domyślnymi pól opcjonalnych oraz oboma terminami SLA. Brak wymaganego pola, pusty lub dłuższy niż 200 znaków tytuł, opis dłuższy niż 4000 znaków, pusta lub dłuższa niż 100 znaków nazwa reportera, `impact` lub `urgency` poza zakresem (w szczególności `impact: 5`), wartość niecałkowita (w szczególności `urgency: "high"`), inny nieprawidłowy typ lub niepoprawny JSON zwracają `400 Bad Request` albo `422 Unprocessable Entity`, z obiektem `error`.
 
 ### `GET /tickets/{id}`
 
@@ -40,7 +44,7 @@ Zwraca `200 OK` i zgłoszenie o podanym identyfikatorze. Nieznany identyfikator 
 
 ### `GET /tickets`
 
-Zwraca `200 OK` i tablicę zgłoszeń. Opcjonalne parametry `state` i `priority` filtrują wynik odpowiednio po dokładnej wartości stanu i priorytetu. Po podaniu filtra tablica nie może zawierać zgłoszeń niespełniających filtra; brak wyników oznacza pustą tablicę.
+Zwraca `200 OK` i tablicę wszystkich pasujących zgłoszeń w dowolnej kolejności, bez paginacji. Opcjonalne parametry `state` i `priority` filtrują wynik odpowiednio po dokładnej wartości stanu i priorytetu. Po podaniu filtra tablica nie może zawierać zgłoszeń niespełniających filtra; brak wyników oznacza pustą tablicę.
 
 ### Operacje zmiany stanu
 
@@ -48,13 +52,13 @@ Zwraca `200 OK` i tablicę zgłoszeń. Opcjonalne parametry `state` i `priority`
 - `POST /tickets/{id}/start`: dozwolone wyłącznie dla `acknowledged`; zwraca `200 OK` i stan `in_progress`.
 - `POST /tickets/{id}/resolve`: dozwolone wyłącznie dla `in_progress`; zwraca `200 OK`, stan `resolved` i ustawia `resolved_at` na bieżący czas żądania.
 - `POST /tickets/{id}/close`: dozwolone wyłącznie dla `resolved`; zwraca `200 OK`, stan `closed` i ustawia `closed_at` na bieżący czas żądania.
-- `POST /tickets/{id}/reopen`: dla `resolved` jest dozwolone nie później niż 7 dni od `resolved_at` i zwraca `200 OK` ze stanem `in_progress`; po upływie 7 dni zwraca `409 Conflict`.
+- `POST /tickets/{id}/reopen`: dla `resolved` jest dozwolone, gdy `now <= resolved_at + 7 dni`, i zwraca `200 OK` ze stanem `in_progress`; czyści `resolved_at` i `closed_at`, ale zachowuje pierwotny `resolve_due_at`; po upływie okna zwraca `409 Conflict`.
 
-Operacja wykonana ze stanu, z którego nie ma odpowiadającego przejścia, zwraca `409 Conflict` i nie zmienia zgłoszenia. Dotyczy to między innymi: ponownego potwierdzenia, rozpoczęcia `new`, rozwiązania `new` lub `acknowledged`, zamknięcia `new` i ponownego otwarcia `new`.
+Każda udana akcja zwraca kompletne zgłoszenie. Operacja wykonana ze stanu, z którego nie ma odpowiadającego przejścia, zwraca `409 Conflict` z obiektem `error` i nie zmienia zgłoszenia. Dotyczy to między innymi: ponownego potwierdzenia, rozpoczęcia `new`, rozwiązania `new` lub `acknowledged`, zamknięcia `new` lub `in_progress` i ponownego otwarcia `new`. Akcja na nieznanym identyfikatorze zwraca `404 Not Found` z obiektem `error`.
 
 ### `GET /tickets/{id}/sla`
 
-Zwraca `200 OK` i bieżący stan SLA zgłoszenia, obejmujący co najmniej logiczne pola `ack_breached`, `resolve_breached` i `paused` oraz terminy `ack_due_at` i `resolve_due_at`. Nieznane zgłoszenie zwraca `404 Not Found` z polem `error`.
+Zwraca `200 OK` i bieżący stan SLA zgłoszenia w postaci `{ priority, ack_due_at, resolve_due_at, ack_breached, resolve_breached, paused }`. Trzy ostatnie pola są logiczne. Nieznane zgłoszenie zwraca `404 Not Found` z obiektem `error`.
 
 ## 4. Macierz priorytetów i VIP (C3)
 
@@ -74,13 +78,13 @@ Podstawowa sekwencja stanów to:
 
 `new -> acknowledged -> in_progress -> resolved -> closed`
 
-Jedyną drogą wstecz jest `resolved -> in_progress` przez `reopen`, o ile od `resolved_at` nie upłynęło więcej niż 7 dni. Przykładowo ponowne otwarcie po 6 dniach jest dozwolone, a po 7 dniach i 1 sekundzie nie jest.
+Jedyną drogą wstecz jest `resolved -> in_progress` przez `reopen`, o ile `now` nie jest późniejsze niż `resolved_at + 7 dni`. Przykładowo ponowne otwarcie po 6 dniach oraz dokładnie na granicy 7 dni jest dozwolone, a po 7 dniach i 1 sekundzie nie jest. Ponowne otwarcie czyści `resolved_at` i `closed_at`; nie wylicza ponownie i nie przesuwa pierwotnego `resolve_due_at`.
 
 Zgodnie z **C2: `immutable`**, stan `closed` jest końcowy. Próba `reopen` zgłoszenia zamkniętego, również jeden dzień po zamknięciu, zwraca `409 Conflict`. Po zamknięciu żadna operacja zmiany stanu nie modyfikuje zgłoszenia ani jego historycznych znaczników czasu; odczyt i filtrowanie pozostają dostępne.
 
 ## 6. SLA
 
-Godziny biznesowe to poniedziałek–piątek, 08:00–16:00 w strefie `Europe/Warsaw`. Czas poza tym oknem nie zużywa SLA opartego na czasie biznesowym. Start poza godzinami biznesowymi jest przesuwany do początku następnego okna; termin wypadający dokładnie o 16:00 jest prawidłowy. Zmiana CET/CEST musi wynikać z reguł strefy `Europe/Warsaw`, a odpowiedzi mogą być normalizowane do UTC.
+Godziny biznesowe to poniedziałek–piątek, półotwarte okno `[08:00:00, 16:00:00)` w strefie `Europe/Warsaw`. Święta publiczne liczą się jak zwykłe dni robocze. Czas poza tym oknem nie zużywa SLA opartego na czasie biznesowym. Początek obliczeń przypadający przed otwarciem jest przesuwany na 08:00 tego samego dnia roboczego, a przypadający po zamknięciu lub w weekend — na 08:00 następnego dnia roboczego. Czas jest następnie konsumowany w kolejnych oknach. Termin wypadający dokładnie o 16:00 pozostaje o 16:00 tego dnia, a nie przechodzi na 08:00 dnia następnego. Obliczenia są świadome zmian CET/CEST według bazy IANA dla `Europe/Warsaw`, a wynik jest zwracany w UTC z `Z`.
 
 Cele SLA wynoszą:
 
@@ -89,17 +93,34 @@ Cele SLA wynoszą:
 | P1 | 15 minut | 4 godziny | czas kalendarzowy (`wallclock`) |
 | P2 | 1 godzina biznesowa | 8 godzin biznesowych | czas biznesowy |
 | P3 | 4 godziny biznesowe | 24 godziny biznesowe | czas biznesowy |
-| P4 | 8 godzin biznesowych | 80 godzin biznesowych | czas biznesowy |
+| P4 | 8 godzin biznesowych | 72 godziny biznesowe | czas biznesowy |
 
 Zgodnie z **C1: `wallclock`**, P1 biegnie bez przerw przez całą dobę, także wieczorem i w weekend. Dla utworzenia P1 w piątek 2026-10-16 o 15:00:00Z terminy to odpowiednio `2026-10-16T15:15:00Z` i `2026-10-16T19:00:00Z`.
 
-`ack_breached` staje się `true`, gdy bieżący czas przekroczył `ack_due_at`, o ile zgłoszenie nie zostało wcześniej potwierdzone. Potwierdzenie przed terminem utrwala brak przekroczenia SLA potwierdzenia także przy późniejszych odczytach. `resolve_breached` analogicznie sygnalizuje przekroczenie `resolve_due_at`, jeżeli rozwiązanie nie nastąpiło na czas. Dla SLA biznesowego `paused` ma wartość `true` poza godzinami biznesowymi (np. w sobotę), a `false` w aktywnym oknie (np. w poniedziałek o 09:00 czasu lokalnego). Dla P1 zegar kalendarzowy nie jest pauzowany.
+Dokładne wyniki opublikowanych wektorów dla wybranych zegarów są następujące:
+
+| Wektor | Priorytet i `created_at` | `ack_due_at` | `resolve_due_at` |
+|---|---|---|---|
+| T1 | P1, `2026-10-14T10:00:00Z` | `2026-10-14T10:15:00Z` | `2026-10-14T14:00:00Z` |
+| T2 | P3, `2026-10-16T13:30:00Z` | `2026-10-19T09:30:00Z` | `2026-10-21T13:30:00Z` |
+| T3 | P1, `2026-10-16T15:00:00Z` | `2026-10-16T15:15:00Z` | `2026-10-16T19:00:00Z` |
+| T4 | P2, `2026-10-17T10:00:00Z` | `2026-10-19T07:00:00Z` | `2026-10-19T14:00:00Z` |
+| T5 | P4, `2027-01-14T14:30:00Z` | `2027-01-15T14:30:00Z` | `2027-01-27T14:30:00Z` |
+| T6 | P1, `2027-01-15T15:50:00Z` | `2027-01-15T16:05:00Z` | `2027-01-15T19:50:00Z` |
+| T7 | P2, `2026-10-14T10:00:00Z` | `2026-10-14T11:00:00Z` | `2026-10-15T10:00:00Z` |
+| T8 | P3, `2026-10-23T13:00:00Z` | `2026-10-26T10:00:00Z` | `2026-10-28T14:00:00Z` |
+
+`ack_breached` jest `true`, jeśli `acknowledged_at` jest nieustawione i `now > ack_due_at` albo jeśli jest ustawione i `acknowledged_at > ack_due_at`. Potwierdzenie wykonane po terminie pozostaje więc przekroczeniem; wykonane przed terminem lub dokładnie w terminie nim nie jest.
+
+`resolve_breached` jest `true`, jeśli `resolved_at` jest nieustawione i `now > resolve_due_at` albo jeśli jest ustawione i `resolved_at > resolve_due_at`. Rozwiązanie wykonane po terminie pozostaje przekroczeniem, a równość nie jest przekroczeniem. Po `reopen` wyczyszczone `resolved_at` oznacza, że zgłoszenie ponownie jest traktowane jako nierozwiązane i oceniane względem niezmienionego, pierwotnego `resolve_due_at`.
+
+`paused` może być `true` wyłącznie wtedy, gdy zgłoszenie nie jest w stanie `resolved` ani `closed`, jego cel rozwiązania korzysta z zegara biznesowego i `now` wypada poza oknem biznesowym. Jest `false` w aktywnym oknie, dla zakończonego zgłoszenia oraz zawsze dla P1 korzystającego zgodnie z C1 z zegara kalendarzowego.
 
 ## 7. Zegar testowy `X-Test-Clock`
 
-Jeśli zmienna środowiskowa `SVCDESK_TEST_CLOCK` ma wartość `"1"`, każde żądanie może przekazać nagłówek `X-Test-Clock` z datą i czasem RFC 3339. Wtedy ta chwila jest wyłącznym „teraz” dla danego żądania: ustala znaczniki czasu operacji, służy do wyliczenia terminów przy tworzeniu oraz do oceny SLA i dozwolonego okna `reopen`. Zegar jest per request, a kolejne żądania mogą celowo używać wcześniejszych lub późniejszych chwil; usługa nie wymaga globalnej monotoniczności nagłówka.
+Jeśli zmienna środowiskowa `SVCDESK_TEST_CLOCK` ma wartość `"1"` albo `"true"`, każde żądanie może przekazać nagłówek `X-Test-Clock` z chwilą RFC 3339 zawierającą offset (zalecane `Z`; timestamp bez strefy jest nieprawidłowy). Wtedy ta chwila jest wyłącznym „teraz” dla danego żądania: ustala `created_at`, `acknowledged_at`, `resolved_at` i `closed_at`, służy do wyliczenia terminów przy tworzeniu oraz do oceny przekroczeń, pauzy i okna `reopen`. Zegar jest per request, a kolejne żądania mogą celowo używać wcześniejszych lub późniejszych chwil; usługa nie porównuje zegarów kolejnych requestów, nie wymaga monotoniczności i nie odrzuca akcji tylko dlatego, że jej zegar jest wcześniejszy od zapisanego timestampu.
 
-Przy włączonej funkcji niepoprawna wartość, w tym `X-Test-Clock: yesterday`, zwraca `400 Bad Request` albo `422 Unprocessable Entity` i nie wykonuje operacji. Bez nagłówka używany jest rzeczywisty czas systemowy. Gdy `SVCDESK_TEST_CLOCK` nie ma wartości `"1"`, klient nie może sterować czasem nagłówkiem i usługa korzysta z czasu systemowego. Nagłówek wpływa wyłącznie na czas, nie omija walidacji ani reguł przejść.
+Przy włączonej funkcji niepoprawna wartość, w tym `X-Test-Clock: yesterday`, zwraca `400 Bad Request` albo `422 Unprocessable Entity` i nie wykonuje operacji. Bez nagłówka używany jest rzeczywisty czas UTC. Gdy zmienna jest nieustawiona albo ma wartość `"0"`, nagłówek jest ignorowany i używany jest rzeczywisty czas UTC. Dla `GET /tickets` i `GET /tickets/{id}` nagłówek nie ma znaczenia, ponieważ odpowiedzi tych endpointów nie zawierają pól zależnych od bieżącego czasu. Nagłówek wpływa wyłącznie na czas, nie omija walidacji ani reguł przejść.
 
 ## 8. Persystencja i uruchomienie przez Docker Compose
 
