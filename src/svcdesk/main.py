@@ -10,11 +10,13 @@ from pathlib import Path
 from typing import Any, Iterator
 from zoneinfo import ZoneInfo
 
-from fastapi import Depends, FastAPI, Header, HTTPException, Query
+from fastapi import Body, Depends, FastAPI, Header, HTTPException, Query
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from starlette.exceptions import HTTPException as StarletteHTTPException
+
+from svcdesk.dora import DoraValidationError, compute_metrics
 
 
 UTC = timezone.utc
@@ -198,6 +200,38 @@ def fetch_ticket(connection: sqlite3.Connection, ticket_id: str) -> sqlite3.Row:
 @app.get("/health")
 def health() -> dict[str, str]:
     return {"status": "ok", "service": "svcdesk"}
+
+
+@app.post("/dora/metrics")
+def dora_metrics(payload: Any = Body(...)) -> dict[str, Any]:
+    try:
+        return compute_metrics(payload)
+    except DoraValidationError as exc:
+        raise error(422, "validation", str(exc)) from exc
+
+
+@app.get("/dora/ticket-events")
+def dora_ticket_events() -> list[dict[str, str]]:
+    phases = (
+        ("created", "created_at", "new"),
+        ("acknowledged", "acknowledged_at", "acknowledged"),
+        ("resolved", "resolved_at", "resolved"),
+        ("closed", "closed_at", "closed"),
+    )
+    stream: list[dict[str, str]] = []
+    with database() as connection:
+        rows = connection.execute(
+            "SELECT id, priority, created_at, acknowledged_at, resolved_at, closed_at FROM tickets"
+        ).fetchall()
+    for row in rows:
+        for phase, column, state in phases:
+            if row[column] is not None:
+                stream.append({
+                    "ticket_id": row["id"], "at": row[column], "phase": phase,
+                    "priority": row["priority"], "state": state,
+                })
+    stream.sort(key=lambda event: (parse_instant(event["at"]), event["ticket_id"]))
+    return stream
 
 
 @app.post("/tickets", status_code=201)
