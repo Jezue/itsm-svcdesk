@@ -1,57 +1,45 @@
 ---
 svcdesk_decisions:
-  C1: wallclock      # wallclock | business
-  C2: immutable      # reopen | immutable
-  C3: vip            # matrix | vip
+  C1: wallclock
+  C2: immutable
+  C3: matrix
 ---
-<!-- ai-generated: ??% - TODO: replace ?? with your estimate and say how AI was used (the advisory flags this line until you do) -->
+<!-- ai-generated: 95% - OpenAI Codex drafted the rationale from the selected decisions and API contract. -->
 
 # Decisions
 
-<!--
-How to fill this in (delete this comment when you are done):
-- The three values in the front matter must be the ones your RUNNING service exhibits. The checker probes the
-  service (checks 2.41, 2.35, 2.46) and compares them with this file (L1-CORE-4).
-- Keep the three headings starting with "## C1", "## C2", "## C3" and the five bold labels in each section. Write
-  at least 20 characters after every label; the lecturer reads this document, so write what you would say to
-  the service owner, not the minimum.
-- "Service owner": the role (never a person's name) who would sign this decision off, and why it is theirs.
-- "Customer outcome": what the reporter or the organisation gets from this choice, in one or two sentences.
-- Update the ai-generated line above to say how much of this text an AI wrote and how.
--->
-
 ## C1 - SLA clock for P1
 
-**Decision:** TODO
+**Decision:** P1 acknowledgement and resolution targets use uninterrupted wall-clock time, including nights and weekends.
 
-**Rejected alternative:** TODO
+**Rejected alternative:** We rejected pausing P1 targets outside the Monday-to-Friday business-hours window.
 
-**Reason:** TODO
+**Reason:** A P1 represents an organisation-wide outage, so delaying its deadline until staffed hours would hide the operational severity.
 
-**Service owner:** TODO
+**Service owner:** The Service Desk product owner owns this choice because that role is accountable for SLA policy and escalation expectations.
 
-**Customer outcome:** TODO
+**Customer outcome:** Reporters receive a continuous emergency response commitment, and operations can identify overdue critical incidents immediately.
 
 ## C2 - Closed tickets and reopening
 
-**Decision:** TODO
+**Decision:** Closed tickets are immutable; only resolved tickets may be reopened during the seven-day window.
 
-**Rejected alternative:** TODO
+**Rejected alternative:** We rejected reopening a closed ticket within seven days of its closure timestamp.
 
-**Reason:** TODO
+**Reason:** Closure records final confirmation of the fix, so preserving that record produces a stable audit trail and reliable reporting.
 
-**Service owner:** TODO
+**Service owner:** The Service Desk product owner signs off because that role governs lifecycle policy, auditability, and reporting quality.
 
-**Customer outcome:** TODO
+**Customer outcome:** Customers create a related follow-up ticket after closure, preserving the original history while keeping recurring work traceable.
 
 ## C3 - VIP reporters and the priority matrix
 
-**Decision:** TODO
+**Decision:** Priority always follows the impact-and-urgency matrix; the stored VIP flag does not alter it.
 
-**Rejected alternative:** TODO
+**Rejected alternative:** We rejected automatically promoting VIP tickets at P3 or P4 to priority P2.
 
-**Reason:** TODO
+**Reason:** Impact and urgency provide consistent operational risk signals, while reporter status alone does not describe service disruption.
 
-**Service owner:** TODO
+**Service owner:** The Service Desk product owner owns priority policy because it controls queue ordering, SLA commitments, and staffing pressure.
 
-**Customer outcome:** TODO
+**Customer outcome:** Every reporter receives prioritisation based on business impact and urgency, producing a transparent and predictable queue.
