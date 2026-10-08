@@ -1,0 +1,9 @@
+# ai-generated: 90% - OpenAI Codex configured automatic loading of the submitted dashboard.
+apiVersion: 1
+providers:
+  - name: svcdesk
+    folder: Svcdesk
+    type: file
+    disableDeletion: true
+    options:
+      path: /var/lib/grafana/dashboards

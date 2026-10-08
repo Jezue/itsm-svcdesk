@@ -1,0 +1,10 @@
+# ai-generated: 90% - OpenAI Codex configured local scraping and the submitted SLO rule file.
+global:
+  scrape_interval: 5s
+  evaluation_interval: 1m
+rule_files:
+  - /etc/prometheus/alerts.yml
+scrape_configs:
+  - job_name: svcdesk
+    static_configs:
+      - targets: ["svcdesk:8080"]

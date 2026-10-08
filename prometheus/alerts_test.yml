@@ -1,0 +1,59 @@
+# ai-generated: 95% - OpenAI Codex created boundary tests that kill duration and threshold mutations.
+rule_files:
+  - alerts.yml
+evaluation_interval: 1m
+tests:
+  - name: fast burn timing and upper-threshold boundary
+    interval: 1m
+    input_series:
+      - series: 'http_server_request_duration_seconds_count{http_route="/kb/search",http_response_status_code="200"}'
+        values: '0+82x30'
+      - series: 'http_server_request_duration_seconds_count{http_route="/kb/search",http_response_status_code="502"}'
+        values: '0+18x30'
+    promql_expr_test:
+      - expr: 'vector(1) and on() count(ALERTS{alertname="SvcdeskAvailabilityFastBurn",alertstate="firing"})'
+        eval_time: 10m
+        exp_samples: []
+      - expr: 'vector(1) and on() count(ALERTS{alertname="SvcdeskAvailabilityFastBurn",alertstate="firing"})'
+        eval_time: 11m
+        exp_samples:
+          - labels: '{}'
+            value: 1
+  - name: fast burn below lower mutation threshold
+    interval: 1m
+    input_series:
+      - series: 'http_server_request_duration_seconds_count{http_route="/kb/search",http_response_status_code="200"}'
+        values: '0+89.2x30'
+      - series: 'http_server_request_duration_seconds_count{http_route="/kb/search",http_response_status_code="502"}'
+        values: '0+10.8x30'
+    promql_expr_test:
+      - expr: 'vector(1) and on() count(ALERTS{alertname="SvcdeskAvailabilityFastBurn",alertstate="firing"})'
+        eval_time: 20m
+        exp_samples: []
+  - name: slow burn timing and upper-threshold boundary
+    interval: 1m
+    input_series:
+      - series: 'http_server_request_duration_seconds_count{http_route="/kb/search",http_response_status_code="200"}'
+        values: '0+92.5x30'
+      - series: 'http_server_request_duration_seconds_count{http_route="/kb/search",http_response_status_code="502"}'
+        values: '0+7.5x30'
+    promql_expr_test:
+      - expr: 'vector(1) and on() count(ALERTS{alertname="SvcdeskAvailabilitySlowBurn",alertstate="firing"})'
+        eval_time: 10m
+        exp_samples: []
+      - expr: 'vector(1) and on() count(ALERTS{alertname="SvcdeskAvailabilitySlowBurn",alertstate="firing"})'
+        eval_time: 11m
+        exp_samples:
+          - labels: '{}'
+            value: 1
+  - name: slow burn below lower mutation threshold
+    interval: 1m
+    input_series:
+      - series: 'http_server_request_duration_seconds_count{http_route="/kb/search",http_response_status_code="200"}'
+        values: '0+95.5x30'
+      - series: 'http_server_request_duration_seconds_count{http_route="/kb/search",http_response_status_code="502"}'
+        values: '0+4.5x30'
+    promql_expr_test:
+      - expr: 'vector(1) and on() count(ALERTS{alertname="SvcdeskAvailabilitySlowBurn",alertstate="firing"})'
+        eval_time: 20m
+        exp_samples: []

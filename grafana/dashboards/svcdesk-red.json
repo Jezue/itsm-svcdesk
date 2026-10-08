@@ -1,0 +1,42 @@
+{
+  "annotations": {"list": []},
+  "editable": true,
+  "panels": [
+    {
+      "id": 1,
+      "title": "Request rate",
+      "type": "timeseries",
+      "targets": [
+        {"refId": "A", "expr": "sum(rate(http_server_request_duration_seconds_count[5m])) by (http_route, http_response_status_code)", "legendFormat": "{{http_route}} {{http_response_status_code}}"}
+      ],
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0}
+    },
+    {
+      "id": 2,
+      "title": "KB search error ratio",
+      "type": "stat",
+      "targets": [
+        {"refId": "A", "expr": "1 - sum(rate(http_server_request_duration_seconds_count{http_route=\"/kb/search\",http_response_status_code=~\"2..\"}[5m])) / sum(rate(http_server_request_duration_seconds_count{http_route=\"/kb/search\"}[5m]))"}
+      ],
+      "fieldConfig": {"defaults": {"unit": "percentunit"}},
+      "gridPos": {"h": 8, "w": 6, "x": 12, "y": 0}
+    },
+    {
+      "id": 3,
+      "title": "KB search p99 latency",
+      "type": "timeseries",
+      "targets": [
+        {"refId": "A", "expr": "histogram_quantile(0.99, sum(rate(http_server_request_duration_seconds_bucket{http_route=\"/kb/search\"}[5m])) by (le))"}
+      ],
+      "fieldConfig": {"defaults": {"unit": "s"}},
+      "gridPos": {"h": 8, "w": 6, "x": 18, "y": 0}
+    }
+  ],
+  "schemaVersion": 41,
+  "tags": ["svcdesk", "RED", "SLO"],
+  "templating": {"list": []},
+  "time": {"from": "now-1h", "to": "now"},
+  "title": "Svcdesk RED and SLO",
+  "uid": "svcdesk-red",
+  "version": 1
+}

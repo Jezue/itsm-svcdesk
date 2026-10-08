@@ -1,0 +1,15 @@
+[
+  {
+    "name": "chat gpt-5",
+    "kind": "CLIENT",
+    "attributes": {
+      "gen_ai.operation.name": "chat",
+      "gen_ai.provider.name": "openai",
+      "gen_ai.request.model": "gpt-5",
+      "gen_ai.response.model": "gpt-5-2026-08-07",
+      "gen_ai.response.finish_reasons": ["stop"],
+      "gen_ai.usage.input_tokens": 38,
+      "gen_ai.usage.output_tokens": 17
+    }
+  }
+]

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import os
 import sqlite3
+import time as monotonic_time
 import uuid
 from contextlib import contextmanager
 from datetime import datetime, time, timedelta, timezone
@@ -10,9 +11,11 @@ from pathlib import Path
 from typing import Any, Iterator
 from zoneinfo import ZoneInfo
 
-from fastapi import Body, Depends, FastAPI, Header, HTTPException, Query
+import httpx
+from fastapi import Body, Depends, FastAPI, Header, HTTPException, Query, Request
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, Response
+from prometheus_client import CONTENT_TYPE_LATEST, Histogram, generate_latest
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
@@ -23,6 +26,22 @@ UTC = timezone.utc
 WARSAW = ZoneInfo("Europe/Warsaw")
 DB_PATH = os.getenv("SVCDESK_DB", "/data/svcdesk.db")
 TEST_CLOCK_ENABLED = os.getenv("SVCDESK_TEST_CLOCK", "").lower() in {"1", "true"}
+KB_INDEX_URL = os.getenv("KB_INDEX_URL", "http://kb-index:8080").rstrip("/")
+
+# A geometric ladder keeps every bucket at or below 20% of the latency it
+# resolves while covering the seeded profiles with fewer than 30 boundaries.
+HTTP_DURATION_BUCKETS = (
+    0.0100, 0.0120, 0.0144, 0.0173, 0.0207, 0.0249, 0.0299, 0.0358,
+    0.0430, 0.0516, 0.0619, 0.0743, 0.0892, 0.1070, 0.1284, 0.1541,
+    0.1849, 0.2219, 0.2662, 0.3195, 0.3834, 0.4601, 0.5521, 0.6625,
+    0.7950, 0.9540, 1.1448, 1.3738, 1.6486, 1.9783,
+)
+REQUEST_DURATION = Histogram(
+    "http_server_request_duration_seconds",
+    "Server-side HTTP request duration in seconds.",
+    ("http_request_method", "http_route", "http_response_status_code"),
+    buckets=HTTP_DURATION_BUCKETS,
+)
 
 PRIORITY_MATRIX = {
     (1, 1): "P1", (1, 2): "P2", (1, 3): "P3",
@@ -55,6 +74,24 @@ class TicketInput(BaseModel):
 
 
 app = FastAPI(title="svcdesk", docs_url=None, redoc_url=None, openapi_url=None)
+
+
+@app.middleware("http")
+async def observe_http_request(request: Request, call_next: Any) -> Response:
+    started = monotonic_time.perf_counter()
+    status = 500
+    try:
+        response = await call_next(request)
+        status = response.status_code
+        return response
+    finally:
+        route = request.scope.get("route")
+        route_template = getattr(route, "path", None) or "unmatched"
+        REQUEST_DURATION.labels(
+            http_request_method=request.method,
+            http_route=route_template,
+            http_response_status_code=str(status),
+        ).observe(monotonic_time.perf_counter() - started)
 
 
 def error(status: int, code: str, message: str) -> HTTPException:
@@ -200,6 +237,29 @@ def fetch_ticket(connection: sqlite3.Connection, ticket_id: str) -> sqlite3.Row:
 @app.get("/health")
 def health() -> dict[str, str]:
     return {"status": "ok", "service": "svcdesk"}
+
+
+@app.get("/metrics", include_in_schema=False)
+def metrics() -> Response:
+    return Response(content=generate_latest(), media_type=CONTENT_TYPE_LATEST)
+
+
+@app.get("/kb/search")
+async def kb_search(q: str = Query(min_length=1, max_length=200)) -> dict[str, Any]:
+    try:
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            upstream = await client.get(f"{KB_INDEX_URL}/search", params={"q": q})
+    except httpx.HTTPError as exc:
+        raise error(502, "upstream_unavailable", "kb-index is unavailable") from exc
+    if upstream.status_code != 200:
+        raise error(502, "upstream_unavailable", "kb-index is unavailable")
+    try:
+        payload = upstream.json()
+    except ValueError as exc:
+        raise error(502, "upstream_unavailable", "kb-index returned an invalid response") from exc
+    if not isinstance(payload, dict) or not isinstance(payload.get("hits"), list):
+        raise error(502, "upstream_unavailable", "kb-index returned an invalid response")
+    return {"query": q, "hits": payload["hits"]}
 
 
 @app.post("/dora/metrics")

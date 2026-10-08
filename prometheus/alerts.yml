@@ -1,0 +1,40 @@
+# ai-generated: 95% - OpenAI Codex drafted and mutation-tested these multi-window burn-rate alerts.
+groups:
+  - name: svcdesk-slo
+    rules:
+      - alert: SvcdeskAvailabilityFastBurn
+        expr: |
+          (
+            1 - sum(rate(http_server_request_duration_seconds_count{http_route="/kb/search",http_response_status_code=~"2.."}[1h]))
+              / sum(rate(http_server_request_duration_seconds_count{http_route="/kb/search"}[1h]))
+          ) > 14.4 * (1 - 0.99)
+          and
+          (
+            1 - sum(rate(http_server_request_duration_seconds_count{http_route="/kb/search",http_response_status_code=~"2.."}[5m]))
+              / sum(rate(http_server_request_duration_seconds_count{http_route="/kb/search"}[5m]))
+          ) > 14.4 * (1 - 0.99)
+        for: 10m
+        labels:
+          service: svcdesk
+          slo: availability
+          severity: P1
+        annotations:
+          summary: Svcdesk availability error budget is burning rapidly
+      - alert: SvcdeskAvailabilitySlowBurn
+        expr: |
+          (
+            1 - sum(rate(http_server_request_duration_seconds_count{http_route="/kb/search",http_response_status_code=~"2.."}[6h]))
+              / sum(rate(http_server_request_duration_seconds_count{http_route="/kb/search"}[6h]))
+          ) > 6 * (1 - 0.99)
+          and
+          (
+            1 - sum(rate(http_server_request_duration_seconds_count{http_route="/kb/search",http_response_status_code=~"2.."}[30m]))
+              / sum(rate(http_server_request_duration_seconds_count{http_route="/kb/search"}[30m]))
+          ) > 6 * (1 - 0.99)
+        for: 10m
+        labels:
+          service: svcdesk
+          slo: availability
+          severity: P2
+        annotations:
+          summary: Svcdesk availability error budget is burning persistently

@@ -15,6 +15,12 @@ services:
       retries: 30
       start_period: 2s
 
+  kb-index:
+    image: ghcr.io/swasik/seeded-toxic:2026
+    environment:
+      SEEDED_TOXIC_LOGIN: "jezue"
+      SEEDED_TOXIC_ADMIN: "0"
+
   tests:
     build: .
     profiles: ["tests"]
@@ -26,5 +32,32 @@ services:
       SVCDESK_URL: http://svcdesk:8080
     command: ["python", "-m", "tests.run"]
 
+  prometheus:
+    image: prom/prometheus:v3.15.0
+    profiles: ["monitoring"]
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./prometheus/alerts.yml:/etc/prometheus/alerts.yml:ro
+      - prometheus-data:/prometheus
+    depends_on:
+      svcdesk:
+        condition: service_healthy
+
+  grafana:
+    image: grafana/grafana:13.2.1
+    profiles: ["monitoring"]
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafana-data:/var/lib/grafana
+    depends_on:
+      - prometheus
+
 volumes:
   svcdesk-data:
+  prometheus-data:
+  grafana-data:
