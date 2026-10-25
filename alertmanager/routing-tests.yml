@@ -1,0 +1,19 @@
+# ai-generated: 100% - OpenAI Codex wrote the route cases and the equal-service counterexample.
+routes:
+  - labels: {alertname: CheckoutErrorRate, service: checkout, severity: P1}
+    receivers: [pager]
+  - labels: {alertname: CheckoutSlowRequests, service: checkout, severity: P1}
+    receivers: [pager]
+  - labels: {alertname: CheckoutErrorWarning, service: checkout, severity: P2}
+    receivers: [chat]
+  - labels: {alertname: SvcdeskAvailabilitySlowBurn, service: svcdesk, slo: availability, severity: P2}
+    receivers: [chat]
+  - labels: {alertname: ItsmRouteCheck, service: frontend, severity: P3}
+    receivers: [chat]
+inhibitions:
+  - source: {alertname: CheckoutErrorRate, service: checkout, severity: P1}
+    target: {alertname: CheckoutErrorWarning, service: checkout, severity: P2}
+    inhibited: true
+  - source: {alertname: CheckoutErrorRate, service: checkout, severity: P1}
+    target: {alertname: CheckoutErrorWarning, service: frontend, severity: P2}
+    inhibited: false

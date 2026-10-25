@@ -1,0 +1,30 @@
+# ai-generated: 100% - OpenAI Codex configured routing and tested the equal-service inhibition pair.
+global:
+  resolve_timeout: 5m
+
+route:
+  receiver: chat
+  group_by: [service, alertname]
+  group_wait: 10s
+  group_interval: 1m
+  repeat_interval: 4h
+  routes:
+    - receiver: pager
+      matchers: ['severity="P1"']
+    - receiver: chat
+      matchers: ['severity=~"P2|P3"']
+
+receivers:
+  - name: pager
+    webhook_configs:
+      - url: http://pager:8080/hook/pager
+        send_resolved: true
+  - name: chat
+    webhook_configs:
+      - url: http://pager:8080/hook/chat
+        send_resolved: true
+
+inhibit_rules:
+  - source_matchers: ['severity="P1"']
+    target_matchers: ['severity=~"P2|P3"']
+    equal: [service]

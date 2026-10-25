@@ -1,0 +1,4043 @@
+{
+  "server_errors": {
+    "query": "sum by(service_name)(rate(traces_span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\",status_code=\"STATUS_CODE_ERROR\"}[5m]))",
+    "results": {
+      "2026-10-12T06:31:23Z": [],
+      "2026-10-12T06:40:00Z": [
+        {
+          "metric": {
+            "service_name": "payment"
+          },
+          "value": [
+            1791787200,
+            "0.014085083333333335"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "checkout"
+          },
+          "value": [
+            1791787200,
+            "0.018780111111111112"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "flagd"
+          },
+          "value": [
+            1791787200,
+            "0"
+          ]
+        }
+      ],
+      "2026-10-12T06:42:00Z": [
+        {
+          "metric": {
+            "service_name": "payment"
+          },
+          "value": [
+            1791787320,
+            "0.032113444444444444"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "checkout"
+          },
+          "value": [
+            1791787320,
+            "0.032113444444444444"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "flagd"
+          },
+          "value": [
+            1791787320,
+            "0"
+          ]
+        }
+      ],
+      "2026-10-12T06:48:00Z": [
+        {
+          "metric": {
+            "service_name": "payment"
+          },
+          "value": [
+            1791787680,
+            "0"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "checkout"
+          },
+          "value": [
+            1791787680,
+            "0"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "flagd"
+          },
+          "value": [
+            1791787680,
+            "0"
+          ]
+        }
+      ]
+    }
+  },
+  "server_calls": {
+    "query": "sum by(service_name)(rate(traces_span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\"}[5m]))",
+    "results": {
+      "2026-10-12T06:31:23Z": [
+        {
+          "metric": {
+            "service_name": "product-catalog"
+          },
+          "value": [
+            1791786683,
+            "1.9749999999999999"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "ad"
+          },
+          "value": [
+            1791786683,
+            "0.1625"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "payment"
+          },
+          "value": [
+            1791786683,
+            "0.09166666666666666"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "recommendation"
+          },
+          "value": [
+            1791786683,
+            "0.14583333333333334"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "cart"
+          },
+          "value": [
+            1791786683,
+            "0.975"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "image-provider"
+          },
+          "value": [
+            1791786683,
+            "0.29583333333333334"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "checkout"
+          },
+          "value": [
+            1791786683,
+            "0.09166666666666666"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "currency"
+          },
+          "value": [
+            1791786683,
+            "0.26666666666666666"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "email"
+          },
+          "value": [
+            1791786683,
+            "0.09166666666666666"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "flagd"
+          },
+          "value": [
+            1791786683,
+            "4.4125"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "frontend"
+          },
+          "value": [
+            1791786683,
+            "3.8083333333333336"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "frontend-proxy"
+          },
+          "value": [
+            1791786683,
+            "1.975"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "quote"
+          },
+          "value": [
+            1791786683,
+            "0.09166666666666666"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "shipping"
+          },
+          "value": [
+            1791786683,
+            "0.18333333333333332"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "telemetry-docs"
+          },
+          "value": [
+            1791786683,
+            "0.19583333333333333"
+          ]
+        }
+      ],
+      "2026-10-12T06:40:00Z": [
+        {
+          "metric": {
+            "service_name": "product-catalog"
+          },
+          "value": [
+            1791787200,
+            "1.9541666666666666"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "ad"
+          },
+          "value": [
+            1791787200,
+            "0.175"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "payment"
+          },
+          "value": [
+            1791787200,
+            "0.10575174999999999"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "recommendation"
+          },
+          "value": [
+            1791787200,
+            "0.15416666666666667"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "cart"
+          },
+          "value": [
+            1791787200,
+            "1.1583333333333332"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "image-provider"
+          },
+          "value": [
+            1791787200,
+            "0.3"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "checkout"
+          },
+          "value": [
+            1791787200,
+            "0.11044677777777777"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "currency"
+          },
+          "value": [
+            1791787200,
+            "0.2875"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "email"
+          },
+          "value": [
+            1791787200,
+            "0.09583333333333333"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "flagd"
+          },
+          "value": [
+            1791787200,
+            "4.5875"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "frontend"
+          },
+          "value": [
+            1791787200,
+            "40.78924894444445"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "frontend-proxy"
+          },
+          "value": [
+            1791787200,
+            "21.166666666666668"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "quote"
+          },
+          "value": [
+            1791787200,
+            "0.10833333333333334"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "shipping"
+          },
+          "value": [
+            1791787200,
+            "0.19583333333333333"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "telemetry-docs"
+          },
+          "value": [
+            1791787200,
+            "0.2"
+          ]
+        }
+      ],
+      "2026-10-12T06:42:00Z": [
+        {
+          "metric": {
+            "service_name": "product-catalog"
+          },
+          "value": [
+            1791787320,
+            "2.1291666666666664"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "ad"
+          },
+          "value": [
+            1791787320,
+            "0.15"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "payment"
+          },
+          "value": [
+            1791787320,
+            "0.10294677777777778"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "recommendation"
+          },
+          "value": [
+            1791787320,
+            "0.18333333333333332"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "cart"
+          },
+          "value": [
+            1791787320,
+            "1.1"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "image-provider"
+          },
+          "value": [
+            1791787320,
+            "0.29583333333333334"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "checkout"
+          },
+          "value": [
+            1791787320,
+            "0.10294677777777778"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "currency"
+          },
+          "value": [
+            1791787320,
+            "0.3375"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "email"
+          },
+          "value": [
+            1791787320,
+            "0.07083333333333333"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "flagd"
+          },
+          "value": [
+            1791787320,
+            "4.75"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "frontend"
+          },
+          "value": [
+            1791787320,
+            "63.40833333333333"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "frontend-proxy"
+          },
+          "value": [
+            1791787320,
+            "31.729166666666668"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "quote"
+          },
+          "value": [
+            1791787320,
+            "0.1"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "shipping"
+          },
+          "value": [
+            1791787320,
+            "0.17083333333333334"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "telemetry-docs"
+          },
+          "value": [
+            1791787320,
+            "0.19583333333333333"
+          ]
+        }
+      ],
+      "2026-10-12T06:48:00Z": [
+        {
+          "metric": {
+            "service_name": "product-catalog"
+          },
+          "value": [
+            1791787680,
+            "1.645065888888889"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "ad"
+          },
+          "value": [
+            1791787680,
+            "0.1104895"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "payment"
+          },
+          "value": [
+            1791787680,
+            "0.09412068518518518"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "recommendation"
+          },
+          "value": [
+            1791787680,
+            "0.11458170370370371"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "cart"
+          },
+          "value": [
+            1791787680,
+            "0.8470861666666667"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "image-provider"
+          },
+          "value": [
+            1791787680,
+            "0.220979"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "checkout"
+          },
+          "value": [
+            1791787680,
+            "0.09412068518518518"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "currency"
+          },
+          "value": [
+            1791787680,
+            "0.28236205555555555"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "email"
+          },
+          "value": [
+            1791787680,
+            "0.09412068518518518"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "flagd"
+          },
+          "value": [
+            1791787680,
+            "3.703444351851852"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "frontend"
+          },
+          "value": [
+            1791787680,
+            "2.9791242962962965"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "frontend-proxy"
+          },
+          "value": [
+            1791787680,
+            "1.534576388888889"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "quote"
+          },
+          "value": [
+            1791787680,
+            "0.09412068518518518"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "shipping"
+          },
+          "value": [
+            1791787680,
+            "0.18824137037037036"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "telemetry-docs"
+          },
+          "value": [
+            1791787680,
+            "0.14731933333333333"
+          ]
+        }
+      ]
+    }
+  },
+  "p95_ms": {
+    "query": "histogram_quantile(0.95, sum by(service_name,le)(rate(traces_span_metrics_duration_milliseconds_bucket{span_kind=\"SPAN_KIND_SERVER\"}[5m])))",
+    "results": {
+      "2026-10-12T06:31:23Z": [
+        {
+          "metric": {
+            "service_name": "email"
+          },
+          "value": [
+            1791786683,
+            "5.56"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "shipping"
+          },
+          "value": [
+            1791786683,
+            "3.5200000000000005"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "payment"
+          },
+          "value": [
+            1791786683,
+            "1.9"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "image-provider"
+          },
+          "value": [
+            1791786683,
+            "1.8999999999999997"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "flagd"
+          },
+          "value": [
+            1791786683,
+            "1.9"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "frontend-proxy"
+          },
+          "value": [
+            1791786683,
+            "33.36842105263157"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "quote"
+          },
+          "value": [
+            1791786683,
+            "1.9"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "telemetry-docs"
+          },
+          "value": [
+            1791786683,
+            "1.9"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "recommendation"
+          },
+          "value": [
+            1791786683,
+            "5.708333333333333"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "currency"
+          },
+          "value": [
+            1791786683,
+            "1.8999999999999997"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "frontend"
+          },
+          "value": [
+            1791786683,
+            "33.964912280701746"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "product-catalog"
+          },
+          "value": [
+            1791786683,
+            "7.097297297297295"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "ad"
+          },
+          "value": [
+            1791786683,
+            "4.049999999999998"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "cart"
+          },
+          "value": [
+            1791786683,
+            "1.9163793103448274"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "checkout"
+          },
+          "value": [
+            1791786683,
+            "48"
+          ]
+        }
+      ],
+      "2026-10-12T06:40:00Z": [
+        {
+          "metric": {
+            "service_name": "checkout"
+          },
+          "value": [
+            1791787200,
+            "47.89236412133773"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "currency"
+          },
+          "value": [
+            1791787200,
+            "1.9"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "frontend"
+          },
+          "value": [
+            1791787200,
+            "5.2463185869168605"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "product-catalog"
+          },
+          "value": [
+            1791787200,
+            "7.327499999999998"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "ad"
+          },
+          "value": [
+            1791787200,
+            "3.7666666666666666"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "email"
+          },
+          "value": [
+            1791787200,
+            "5.616666666666666"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "telemetry-docs"
+          },
+          "value": [
+            1791787200,
+            "1.9"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "payment"
+          },
+          "value": [
+            1791787200,
+            "1.9803259938862052"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "frontend-proxy"
+          },
+          "value": [
+            1791787200,
+            "5.837916063675831"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "quote"
+          },
+          "value": [
+            1791787200,
+            "1.9"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "shipping"
+          },
+          "value": [
+            1791787200,
+            "3.0599999999999996"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "cart"
+          },
+          "value": [
+            1791787200,
+            "1.9490774907749076"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "image-provider"
+          },
+          "value": [
+            1791787200,
+            "1.9"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "flagd"
+          },
+          "value": [
+            1791787200,
+            "1.9"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "recommendation"
+          },
+          "value": [
+            1791787200,
+            "4.149999999999998"
+          ]
+        }
+      ],
+      "2026-10-12T06:42:00Z": [
+        {
+          "metric": {
+            "service_name": "payment"
+          },
+          "value": [
+            1791787320,
+            "1.982608695652174"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "image-provider"
+          },
+          "value": [
+            1791787320,
+            "1.8999999999999997"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "checkout"
+          },
+          "value": [
+            1791787320,
+            "47.714285714285715"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "currency"
+          },
+          "value": [
+            1791787320,
+            "1.9"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "flagd"
+          },
+          "value": [
+            1791787320,
+            "1.9016681299385425"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "frontend"
+          },
+          "value": [
+            1791787320,
+            "4.376240601503755"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "quote"
+          },
+          "value": [
+            1791787320,
+            "1.9"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "telemetry-docs"
+          },
+          "value": [
+            1791787320,
+            "1.9"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "recommendation"
+          },
+          "value": [
+            1791787320,
+            "3.8"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "email"
+          },
+          "value": [
+            1791787320,
+            "5.574999999999999"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "ad"
+          },
+          "value": [
+            1791787320,
+            "3.76"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "product-catalog"
+          },
+          "value": [
+            1791787320,
+            "7.50851063829787"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "cart"
+          },
+          "value": [
+            1791787320,
+            "1.92183908045977"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "frontend-proxy"
+          },
+          "value": [
+            1791787320,
+            "5.697510822510823"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "shipping"
+          },
+          "value": [
+            1791787320,
+            "3.1799999999999997"
+          ]
+        }
+      ],
+      "2026-10-12T06:48:00Z": [
+        {
+          "metric": {
+            "service_name": "ad"
+          },
+          "value": [
+            1791787680,
+            "3.4599999999999995"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "payment"
+          },
+          "value": [
+            1791787680,
+            "1.9"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "cart"
+          },
+          "value": [
+            1791787680,
+            "1.9567164179104475"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "checkout"
+          },
+          "value": [
+            1791787680,
+            "48"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "flagd"
+          },
+          "value": [
+            1791787680,
+            "1.9"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "quote"
+          },
+          "value": [
+            1791787680,
+            "1.9"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "shipping"
+          },
+          "value": [
+            1791787680,
+            "2.8499999999999988"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "product-catalog"
+          },
+          "value": [
+            1791787680,
+            "7.393333333333333"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "recommendation"
+          },
+          "value": [
+            1791787680,
+            "7.200000000000001"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "currency"
+          },
+          "value": [
+            1791787680,
+            "1.8999999999999997"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "email"
+          },
+          "value": [
+            1791787680,
+            "5.9624999999999995"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "frontend"
+          },
+          "value": [
+            1791787680,
+            "35.44"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "telemetry-docs"
+          },
+          "value": [
+            1791787680,
+            "1.9"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "frontend-proxy"
+          },
+          "value": [
+            1791787680,
+            "35.294117647058826"
+          ]
+        },
+        {
+          "metric": {
+            "service_name": "image-provider"
+          },
+          "value": [
+            1791787680,
+            "1.9"
+          ]
+        }
+      ]
+    }
+  },
+  "container_memory": {
+    "query": "container_memory_usage_total_bytes",
+    "results": {
+      "2026-10-12T06:31:23Z": [
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "ad",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "295432192"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "alertmanager",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "28262400"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "astronomy-db",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "60620800"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "cart",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "54423552"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "checkout",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "19472384"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "currency",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "8060928"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "email",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "60928000"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "flagd",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "56471552"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "flagd-ui",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "178548736"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "frontend",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "103841792"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "frontend-proxy",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "29851648"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "grafana",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "152883200"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "image-provider",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "8351744"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "jaeger",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "70119424"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "kb-index",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "2154496"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "load-generator",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "119259136"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "opamp-server",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "11128832"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "opensearch",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "993611776"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "otel-collector",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "131665920"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "pager",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "3760128"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "payment",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "86507520"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "pilot-flagd-ui",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "23035904"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "product-catalog",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "20316160"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "prometheus",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "72015872"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "quote",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "28991488"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "recommendation",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "83701760"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "seeded-flagd",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "7536640"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "shipping",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "15839232"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "svcdesk",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "46088192"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "telemetry-docs",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "6180864"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "valkey-cart",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "3301376"
+          ]
+        }
+      ],
+      "2026-10-12T06:40:00Z": [
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "ad",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "308113408"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "alertmanager",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "43073536"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "astronomy-db",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "60850176"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "cart",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "56836096"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "checkout",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "24940544"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "currency",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "8089600"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "email",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "61177856"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "flagd",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "58372096"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "flagd-ui",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "179232768"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "frontend",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "126423040"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "frontend-proxy",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "32468992"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "grafana",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "147251200"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "image-provider",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "8052736"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "jaeger",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "173056000"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "kb-index",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "2154496"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "load-generator",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "84967424"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "opamp-server",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "12038144"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "opensearch",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "998572032"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "otel-collector",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "138772480"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "pager",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "5271552"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "payment",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "65351680"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "pilot-flagd-ui",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "23572480"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "product-catalog",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "20373504"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "prometheus",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "76238848"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "quote",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "17973248"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "recommendation",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "57282560"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "seeded-flagd",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "6119424"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "shipping",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "9854976"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "svcdesk",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "43708416"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "telemetry-docs",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "6180864"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "valkey-cart",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "3870720"
+          ]
+        }
+      ],
+      "2026-10-12T06:42:00Z": [
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "ad",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "310439936"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "alertmanager",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "44036096"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "astronomy-db",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "59879424"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "cart",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "58941440"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "checkout",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "24727552"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "currency",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "9691136"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "email",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "61190144"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "flagd",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "46739456"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "flagd-ui",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "179052544"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "frontend",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "126840832"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "frontend-proxy",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "32370688"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "grafana",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "135159808"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "image-provider",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "8400896"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "jaeger",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "210038784"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "kb-index",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "2154496"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "load-generator",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "85708800"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "opamp-server",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "11161600"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "opensearch",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1000132608"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "otel-collector",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "138440704"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "pager",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "5599232"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "payment",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "65421312"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "pilot-flagd-ui",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "23584768"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "product-catalog",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "20619264"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "prometheus",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "79720448"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "quote",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "18010112"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "recommendation",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "57225216"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "seeded-flagd",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "6492160"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "shipping",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "9629696"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "svcdesk",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "43708416"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "telemetry-docs",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "6184960"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "valkey-cart",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "3330048"
+          ]
+        }
+      ],
+      "2026-10-12T06:48:00Z": [
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "ad",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "309690368"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "alertmanager",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "45142016"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "astronomy-db",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "61169664"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "cart",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "58372096"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "checkout",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "25481216"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "currency",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "8765440"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "email",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "61120512"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "flagd",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "67321856"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "flagd-ui",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "179335168"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "frontend",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "126922752"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "frontend-proxy",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "32325632"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "grafana",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "25104384"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "image-provider",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "8204288"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "jaeger",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "219815936"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "kb-index",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "2154496"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "load-generator",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "85966848"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "opamp-server",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "11436032"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "opensearch",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "998940672"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "otel-collector",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "140972032"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "pager",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "5255168"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "payment",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "65519616"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "pilot-flagd-ui",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "23707648"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "product-catalog",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "20180992"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "prometheus",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "81350656"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "quote",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "18149376"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "recommendation",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "63148032"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "seeded-flagd",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "6356992"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "shipping",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "9924608"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "svcdesk",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "43716608"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "telemetry-docs",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "6189056"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "valkey-cart",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "3870720"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_memory_usage_total_bytes",
+            "container_name": "wonderful_sinoussi",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "35409920"
+          ]
+        }
+      ]
+    }
+  },
+  "container_uptime": {
+    "query": "container_uptime_seconds",
+    "results": {
+      "2026-10-12T06:31:23Z": [
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "ad",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "551.646391718"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "alertmanager",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "568.127496826"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "astronomy-db",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "568.13629178"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "cart",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "551.157495801"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "checkout",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "545.392058464"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "currency",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "551.633962816"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "email",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "551.607307776"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "flagd",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "562.046967842"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "flagd-ui",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "551.600777117"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "frontend",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "541.158331467"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "frontend-proxy",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "534.678730415"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "grafana",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "568.108552828"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "image-provider",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "551.620477389"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "jaeger",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "568.131546216"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "kb-index",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "568.117391167"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "load-generator",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "535.399912355"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "opamp-server",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "568.106323372"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "opensearch",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "568.111326609"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "otel-collector",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "551.933564932"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "pager",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "568.195023959"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "payment",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "551.612635827"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "pilot-flagd-ui",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "116549.931135297"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "product-catalog",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "551.155066893"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "prometheus",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "568.122144136"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "quote",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "551.598129845"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "recommendation",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "550.930150107"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "seeded-flagd",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "568.115318109"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "shipping",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "551.604016051"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "svcdesk",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "568.168672719"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "telemetry-docs",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "568.113324282"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "valkey-cart",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791786683,
+            "568.154345096"
+          ]
+        }
+      ],
+      "2026-10-12T06:40:00Z": [
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "ad",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1061.646564441"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "alertmanager",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1078.127669549"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "astronomy-db",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1078.136464503"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "cart",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1061.157668524"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "checkout",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1055.392231187"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "currency",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1061.634135539"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "email",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1061.607480499"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "flagd",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1072.047140565"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "flagd-ui",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1061.60094984"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "frontend",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1051.15850419"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "frontend-proxy",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1044.678903138"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "grafana",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1078.108725551"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "image-provider",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1061.620650112"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "jaeger",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1078.131718939"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "kb-index",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1078.11756389"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "load-generator",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1045.400085078"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "opamp-server",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1078.106496095"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "opensearch",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1078.111499332"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "otel-collector",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1061.933737655"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "pager",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1078.195196682"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "payment",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1061.61280855"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "pilot-flagd-ui",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "117059.93130802"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "product-catalog",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1061.155239616"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "prometheus",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1078.122316859"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "quote",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1061.598302568"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "recommendation",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1060.93032283"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "seeded-flagd",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1078.115490832"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "shipping",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1061.604188774"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "svcdesk",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1078.168845442"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "telemetry-docs",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1078.113497005"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "valkey-cart",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787200,
+            "1078.154517819"
+          ]
+        }
+      ],
+      "2026-10-12T06:42:00Z": [
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "ad",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1181.647055177"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "alertmanager",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1198.128160285"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "astronomy-db",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1198.136955239"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "cart",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1181.15815926"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "checkout",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1175.392721923"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "currency",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1181.634626275"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "email",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1181.607971235"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "flagd",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1192.047631301"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "flagd-ui",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1181.601440576"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "frontend",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1171.158994926"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "frontend-proxy",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1164.679393874"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "grafana",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1198.109216287"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "image-provider",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1181.621140848"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "jaeger",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1198.132209675"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "kb-index",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1198.118054626"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "load-generator",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1165.400575814"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "opamp-server",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1198.106986831"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "opensearch",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1198.111990068"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "otel-collector",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1181.934228391"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "pager",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1198.195687418"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "payment",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1181.613299286"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "pilot-flagd-ui",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "117179.931798756"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "product-catalog",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1181.155730352"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "prometheus",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1198.122807595"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "quote",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1181.598793304"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "recommendation",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1180.930813566"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "seeded-flagd",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1198.115981568"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "shipping",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1181.60467951"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "svcdesk",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1198.169336178"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "telemetry-docs",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1198.113987741"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "valkey-cart",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787320,
+            "1198.155008555"
+          ]
+        }
+      ],
+      "2026-10-12T06:48:00Z": [
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "ad",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1471.647184055"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "alertmanager",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1488.128289163"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "astronomy-db",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1488.137084117"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "cart",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1471.158288138"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "checkout",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1465.392850801"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "currency",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1471.634755153"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "email",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1471.608100113"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "flagd",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1482.047760179"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "flagd-ui",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1471.601569454"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "frontend",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1461.159123804"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "frontend-proxy",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1454.679522752"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "grafana",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1488.109345165"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "image-provider",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1471.621269726"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "jaeger",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1488.132338553"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "kb-index",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1488.118183504"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "load-generator",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1455.400704692"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "opamp-server",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1488.107115709"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "opensearch",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1488.112118946"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "otel-collector",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1471.934357269"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "pager",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1488.195816296"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "payment",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1471.613428164"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "pilot-flagd-ui",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "117469.931927634"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "product-catalog",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1471.15585923"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "prometheus",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1488.122936473"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "quote",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1471.598922182"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "recommendation",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1470.930942444"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "seeded-flagd",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1488.116110446"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "shipping",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1471.604808388"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "svcdesk",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1488.169465056"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "telemetry-docs",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1488.114116619"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "valkey-cart",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "1488.155137433"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "container_uptime_seconds",
+            "container_name": "wonderful_sinoussi",
+            "host_name": "itsm-playground"
+          },
+          "value": [
+            1791787680,
+            "35.132820655"
+          ]
+        }
+      ]
+    }
+  },
+  "charge_errors": {
+    "query": "sum(rate(traces_span_metrics_calls_total{service_name=\"payment\",span_name=\"charge\",status_code=\"STATUS_CODE_ERROR\"}[5m]))",
+    "results": {
+      "2026-10-12T06:31:23Z": [],
+      "2026-10-12T06:40:00Z": [
+        {
+          "metric": {},
+          "value": [
+            1791787200,
+            "0.014085083333333335"
+          ]
+        }
+      ],
+      "2026-10-12T06:42:00Z": [
+        {
+          "metric": {},
+          "value": [
+            1791787320,
+            "0.032113444444444444"
+          ]
+        }
+      ],
+      "2026-10-12T06:48:00Z": [
+        {
+          "metric": {},
+          "value": [
+            1791787680,
+            "0"
+          ]
+        }
+      ]
+    }
+  },
+  "checkout_error_fraction": {
+    "query": "sum(rate(traces_span_metrics_calls_total{service_name=\"checkout\",span_kind=\"SPAN_KIND_SERVER\",status_code=\"STATUS_CODE_ERROR\"}[5m])) / sum(rate(traces_span_metrics_calls_total{service_name=\"checkout\",span_kind=\"SPAN_KIND_SERVER\"}[5m]))",
+    "results": {
+      "2026-10-12T06:31:23Z": [],
+      "2026-10-12T06:40:00Z": [
+        {
+          "metric": {},
+          "value": [
+            1791787200,
+            "0.17003765514008257"
+          ]
+        }
+      ],
+      "2026-10-12T06:42:00Z": [
+        {
+          "metric": {},
+          "value": [
+            1791787320,
+            "0.3119422009862701"
+          ]
+        }
+      ],
+      "2026-10-12T06:48:00Z": [
+        {
+          "metric": {},
+          "value": [
+            1791787680,
+            "0"
+          ]
+        }
+      ]
+    }
+  }
+}

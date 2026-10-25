@@ -1,0 +1,27 @@
+# ai-generated: 100% - OpenAI Codex authored server-span symptom alerts for errors and latency.
+groups:
+  - name: shop-symptoms
+    rules:
+      - alert: CheckoutErrorRate
+        expr: |
+          sum(rate(traces_span_metrics_calls_total{service_name="checkout",span_kind="SPAN_KIND_SERVER",status_code="STATUS_CODE_ERROR"}[5m]))
+          / sum(rate(traces_span_metrics_calls_total{service_name="checkout",span_kind="SPAN_KIND_SERVER"}[5m])) > 0.05
+        for: 1m
+        labels: {service: checkout, severity: P1}
+        annotations:
+          summary: More than five percent of checkout requests fail
+      - alert: CheckoutSlowRequests
+        expr: |
+          histogram_quantile(0.95, sum by (le) (rate(traces_span_metrics_duration_milliseconds_bucket{service_name="checkout",span_kind="SPAN_KIND_SERVER"}[5m]))) > 2000
+        for: 1m
+        labels: {service: checkout, severity: P1}
+        annotations:
+          summary: Checkout p95 exceeds two seconds
+      - alert: CheckoutErrorWarning
+        expr: |
+          sum(rate(traces_span_metrics_calls_total{service_name="checkout",span_kind="SPAN_KIND_SERVER",status_code="STATUS_CODE_ERROR"}[5m]))
+          / sum(rate(traces_span_metrics_calls_total{service_name="checkout",span_kind="SPAN_KIND_SERVER"}[5m])) > 0.02
+        for: 1m
+        labels: {service: checkout, severity: P2}
+        annotations:
+          summary: Checkout error fraction exceeds two percent
