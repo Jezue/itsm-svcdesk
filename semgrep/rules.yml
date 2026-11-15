@@ -1,0 +1,16 @@
+# ai-generated: 100% - OpenAI Codex wrote service-specific review guards for test-clock and SQLite access.
+rules:
+  - id: svcdesk-test-clock-switch
+    languages: [python]
+    severity: INFO
+    message: Review this test-clock switch when deploying; production must not trust client-supplied SLA time.
+    metadata:
+      category: correctness
+    pattern: os.getenv("SVCDESK_TEST_CLOCK", ...)
+  - id: svcdesk-sqlite-connection
+    languages: [python]
+    severity: INFO
+    message: Review SQLite connection ownership; keep creation inside the database helper or schema initialisation.
+    metadata:
+      category: correctness
+    pattern: sqlite3.connect(...)

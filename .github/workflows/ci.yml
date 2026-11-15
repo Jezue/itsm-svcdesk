@@ -1,4 +1,4 @@
-# ai-generated: 100% - Claude Code (Opus 5.5) wrote this file from the course's Lab 5 design (CI-SPEC.md is its public part); the lecturer reviews it
+# ai-generated: 100% - Course AI-generated pipeline; OpenAI Codex wired service and bake-off tests.
 # The Lab 5 pipeline (CI-SPEC.md P-01..P-09). Copy it with .github/actions/ into your repository, then replace the one
 # placeholder step of build-test (it fails on purpose) with the build and the tests of your svcdesk (P-02: afterwards
 # the placeholder's marker must not appear anywhere under .github/). Everything else works as shipped.
@@ -41,6 +41,7 @@ jobs:
         run: |
           docker compose build svcdesk tests
           docker compose --profile tests run --rm tests
+          python3 -S -E -m unittest -v test_bakeoff
 
   deps:
     runs-on: ubuntu-latest
