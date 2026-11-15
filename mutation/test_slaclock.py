@@ -6,7 +6,7 @@ import pytest
 import slaclock as sla
 
 
-@pytest.mark.parametrize("impact,urgency", itertools.product(range(1, 4), repeat=2))
+@pytest.mark.parametrize("impact,urgency", list(itertools.product(range(1, 4), repeat=2)))
 def test_priority_matrix(impact, urgency):
     expected = {(1, 1): "P1", (1, 2): "P2", (1, 3): "P3",
                 (2, 1): "P2", (2, 2): "P3", (2, 3): "P4",
@@ -110,7 +110,7 @@ def test_calendar_limit_and_invalid_intervals():
         sla.add_business_minutes(start, expected + 481)
 
 
-@pytest.mark.parametrize("priority,breached,reopens", itertools.product(["P1", "P2", "P3", "P4"], [False, True], [0, 1, 2, 3, 100]))
+@pytest.mark.parametrize("priority,breached,reopens", list(itertools.product(["P1", "P2", "P3", "P4"], [False, True], [0, 1, 2, 3, 100])))
 def test_escalation(priority, breached, reopens):
     base = {"P1": 1, "P2": 1, "P3": 0, "P4": 0}[priority]
     extra = {"P1": 2, "P2": 1, "P3": 1, "P4": 1}[priority] if breached else 0
